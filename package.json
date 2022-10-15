@@ -2,7 +2,7 @@
   "name": "@dotpostcard/postcards",
   "description": "A library for reading and interacting with .postcard files.",
   "private": false,
-  "version": "0.5.1",
+  "version": "0.5.2",
   "keywords": [
     "typescript",
     "postcards"
