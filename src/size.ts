@@ -93,7 +93,7 @@ export class DoubleSidedSize {
   }
 }
 
-const ratLengthFormat = /^(\d+)\/(\d+)cm$/
+const ratLengthFormat = /^(\d+)\/(\d+)$/
 
 const parseRational = (ratLength: string): [number, number] => {
   const m = ratLength.match(ratLengthFormat)
