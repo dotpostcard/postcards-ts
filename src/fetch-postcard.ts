@@ -47,6 +47,7 @@ const processMetadata = (obj: any): Metadata => {
     frontSize,
     front,
     back,
+    context,
     ...others
   } = obj
 
@@ -65,5 +66,9 @@ const processMetadata = (obj: any): Metadata => {
       transcription: back.transcription && new LocalizedText(back.transcription),
       secrets: back.secrets,
     },
+    context: context && {
+      author: context.author,
+      description: context.description && new LocalizedText(context.description),
+    }
   } as Metadata
 }
