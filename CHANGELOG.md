@@ -1,3 +1,19 @@
+# v0.5.1 (Sat Oct 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix: Parse cm lengths properly ([@jphastings](https://github.com/jphastings))
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/dotpostcard/postcards-ts ([@jphastings](https://github.com/jphastings))
+
+#### Authors: 1
+
+- JP Hastings-Spital ([@jphastings](https://github.com/jphastings))
+
+---
+
 # v0.5.0 (Sat Oct 15 2022)
 
 #### 🚀 Enhancement
