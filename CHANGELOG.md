@@ -1,3 +1,15 @@
+# v0.5.2 (Sat Oct 15 2022)
+
+#### 🐛 Bug Fix
+
+- Handle rich person info & expose context [#1](https://github.com/dotpostcard/postcards-ts/pull/1) ([@jphastings](https://github.com/jphastings))
+
+#### Authors: 1
+
+- JP Hastings-Spital ([@jphastings](https://github.com/jphastings))
+
+---
+
 # v0.5.1 (Sat Oct 15 2022)
 
 #### 🐛 Bug Fix
