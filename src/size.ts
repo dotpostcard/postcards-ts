@@ -3,6 +3,10 @@ import { Flip, isHeteroriented } from "./types"
 export type Size = {w: number, h: number}
 type Length = [ a: number, b: number ]
 type ScalerFn = (w: Length, h: Length) => Size
+type MashalledSize = {pxW: number, pxH: number, cmW?: string, cmH?: string}
+
+// The standard UK postcard's longest side is 14.8cm
+const fallBackLongestSide: Length = [148, 10]
 
 export class DoubleSidedSize {
   fw: Length
@@ -11,24 +15,34 @@ export class DoubleSidedSize {
   isHeteroriented: boolean
   scaler!: ScalerFn
 
-  constructor({ w, h }: {w: string, h: string}, flip: Flip) {
-    if (typeof w !== 'string' || typeof h !== 'string') {
-      throw 'missing size attribute'
+  constructor(size: MashalledSize, flip: Flip) {
+    if (typeof size !== 'object' || typeof size.pxW !== 'number' || typeof size.pxH !== 'number') {
+      throw 'Missing size attribute'
     }
-
-    this.fw = parseRational(w)
-    this.fh = parseRational(h)
     this.isHeteroriented = isHeteroriented(flip)
 
-    if (this.isHeteroriented) {
+    if (size.cmW && size.cmH) {
+      this.fw = parseRational(size.cmW)
+      this.fh = parseRational(size.cmH)
+
       if ((this.fw[0] / this.fw[1]) > (this.fh[0] / this.fh[1])) {
         this.biggest = this.fw
       } else {
         this.biggest = this.fh
       }
+    } else {
+      this.biggest = fallBackLongestSide
+      
+      if (size.pxW > size.pxH) {
+        this.fw = this.biggest
+        this.fh = [this.biggest[0] * size.pxH, this.biggest[1] * size.pxW]
+      } else {
+        this.fh = this.biggest
+        this.fw = [this.biggest[0] * size.pxW, this.biggest[1] * size.pxH]
+      }
     }
 
-    this.setBounds()
+    this.setBounds({ w: size.pxW, h: size.pxH })
   }
 
   front(): Size {
