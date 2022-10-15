@@ -1,10 +1,22 @@
 import { DoubleSidedSize } from "./size"
 
+type NotEmpty<T> = {} extends T ? never : T
+
 export enum Flip {
   Book = "book",
   LeftHand = "left-hand",
   Calendar = "calendar",
   RightHand = "right-hand",
+}
+
+export type Person = NotEmpty<{
+  name?: string;
+  uri?: string;
+}>
+
+export type Context = {
+  author: Person;
+  description: LocalizedText;
 }
 
 export const isHeteroriented = (flip: Flip): boolean => {
@@ -19,10 +31,11 @@ export type Metadata = {
   flip: Flip,
   size: DoubleSidedSize,
   sentOn: Date,
-  sender: string,
-  recipient: string,
+  sender: Person,
+  recipient: Person,
   front: SideDetails,
   back: SideDetails,
+  context?: Context,
 }
 
 export type SideDetails = {
