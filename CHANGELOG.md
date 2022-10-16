@@ -1,3 +1,15 @@
+# v0.6.0 (Sun Oct 16 2022)
+
+#### 🚀 Enhancement
+
+- feat: Expose physical size string ([@jphastings](https://github.com/jphastings))
+
+#### Authors: 1
+
+- JP Hastings-Spital ([@jphastings](https://github.com/jphastings))
+
+---
+
 # v0.5.2 (Sat Oct 15 2022)
 
 #### 🐛 Bug Fix
