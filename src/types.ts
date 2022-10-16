@@ -21,25 +21,27 @@ export const isHeteroriented = (flip: Flip): boolean => {
   return flip == Flip.LeftHand || flip == Flip.RightHand
 }
 
+type LatLong = Required<{
+  latitude: number,
+  longitude: number,
+}>
+
 export type Metadata = {
-  location: [
-    latitude: number,
-    longitude: number,
-  ],
+  location?: { name: string } | { name: string } & LatLong,
   flip: Flip,
   size: DoubleSidedSize,
-  sentOn: Date,
-  sender: Person,
-  recipient: Person,
+  sentOn?: Date,
+  sender?: Person,
+  recipient?: Person,
   front: SideDetails,
   back: SideDetails,
   context?: Context,
 }
 
 export type SideDetails = {
-  description: LocalizedText,
-  transcription: LocalizedText,
-  secrets: Polygon[]
+  description?: LocalizedText,
+  transcription?: LocalizedText,
+  secrets?: Polygon[]
 }
 
 // A standard locale code — ISO 639-1, a dash, ISO 3166-1 alpha 2, eg. en-GB, es-VE
