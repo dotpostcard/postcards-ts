@@ -24,5 +24,5 @@ const run = async (postcardFileUrl) => {
   document.getElementsByTagName('img')[0].src = frontUrl
 }
 
-run('https://github.com/dotpostcard/postcards-go/raw/main/fixtures/hello.postcard')
+run('https://raw.githubusercontent.com/dotpostcard/postcards-go/main/fixtures/hello.postcard')
 ```
