@@ -1,3 +1,19 @@
+# v0.7.2 (Sun Oct 16 2022)
+
+#### 🐛 Bug Fix
+
+- fix: Minimum of both width and height ([@jphastings](https://github.com/jphastings))
+
+#### ⚠️ Pushed to `main`
+
+- docs: Example URL that has CORS headers ([@jphastings](https://github.com/jphastings))
+
+#### Authors: 1
+
+- JP Hastings-Spital ([@jphastings](https://github.com/jphastings))
+
+---
+
 # v0.7.1 (Sun Oct 16 2022)
 
 #### 🐛 Bug Fix
