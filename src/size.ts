@@ -9,11 +9,13 @@ type MashalledSize = {pxW: number, pxH: number, cmW?: string, cmH?: string}
 const fallBackLongestSide: Length = [148, 10]
 
 export class DoubleSidedSize {
-  fw: Length
-  fh:  Length
-  biggest: Length | undefined
+  physical?: string
   isHeteroriented: boolean
-  scaler!: ScalerFn
+  
+  private fw: Length
+  private fh:  Length
+  private biggest: Length | undefined
+  private scaler!: ScalerFn
 
   constructor(size: MashalledSize, flip: Flip) {
     if (typeof size !== 'object' || typeof size.pxW !== 'number' || typeof size.pxH !== 'number') {
@@ -24,6 +26,7 @@ export class DoubleSidedSize {
     if (size.cmW && size.cmH) {
       this.fw = parseRational(size.cmW)
       this.fh = parseRational(size.cmH)
+      this.physical = `${rationalString(this.fw)}cm x ${rationalString(this.fh)}cm`
 
       if ((this.fw[0] / this.fw[1]) > (this.fh[0] / this.fh[1])) {
         this.biggest = this.fw
@@ -103,3 +106,5 @@ const parseRational = (ratLength: string): [number, number] => {
 
   return [parseInt(m[1]), parseInt(m[2])]
 }
+
+const rationalString = (rat: [number, number]): string => (rat[0] / rat[1]).toFixed(1)
