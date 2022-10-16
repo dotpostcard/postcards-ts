@@ -43,11 +43,8 @@ export const fetchPostcard = async (url: string | URL): Promise<Postcard> => {
 
 const processMetadata = (obj: any): Metadata => {
   const {
-    flip,
-    frontSize,
-    front,
-    back,
-    context,
+    flip, frontSize, sentOn,
+    front, back, context,
     ...others
   } = obj
 
@@ -55,6 +52,7 @@ const processMetadata = (obj: any): Metadata => {
   return {
     ...others,
     flip,
+    sentOn: sentOn && new Date(sentOn),
     size: new DoubleSidedSize(frontSize, flip),
     front: front && {
       description: front.description && new LocalizedText(front.description),

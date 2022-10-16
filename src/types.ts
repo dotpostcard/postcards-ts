@@ -1,7 +1,5 @@
 import { DoubleSidedSize } from "./size"
 
-type NotEmpty<T> = {} extends T ? never : T
-
 export enum Flip {
   Book = "book",
   LeftHand = "left-hand",
@@ -9,10 +7,10 @@ export enum Flip {
   RightHand = "right-hand",
 }
 
-export type Person = NotEmpty<{
-  name?: string;
+export type Person = {
+  name: string;
   uri?: string;
-}>
+}
 
 export type Context = {
   author: Person;
