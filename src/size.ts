@@ -86,7 +86,7 @@ export class DoubleSidedSize {
     } else {
       const scaleW = this.fw[1] * bounds.w / this.fw[0]
       const scaleH = this.fh[1] * bounds.h / this.fh[0]      
-      scaleFactor = (!scaleW || scaleH > scaleW) ? scaleH : scaleW
+      scaleFactor = (!scaleW || scaleH < scaleW) ? scaleH : scaleW
     }
 
    this.scaler = (w: Length, h: Length) => ({
