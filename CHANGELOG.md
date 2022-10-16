@@ -1,3 +1,15 @@
+# v0.7.1 (Sun Oct 16 2022)
+
+#### 🐛 Bug Fix
+
+- fix: Issue with absolute scaling ([@jphastings](https://github.com/jphastings))
+
+#### Authors: 1
+
+- JP Hastings-Spital ([@jphastings](https://github.com/jphastings))
+
+---
+
 # v0.7.0 (Sun Oct 16 2022)
 
 #### 🚀 Enhancement
