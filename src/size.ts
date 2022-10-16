@@ -85,8 +85,8 @@ export class DoubleSidedSize {
       scaleFactor = this.biggest![1] * maxBound / this.biggest![0]
     } else {
       const scaleW = this.fw[1] * bounds.w / this.fw[0]
-      const scaleH = this.fh[1] * bounds.h / this.fh[0]
-      scaleFactor = (!scaleW || scaleW < scaleH) ? scaleW : scaleH
+      const scaleH = this.fh[1] * bounds.h / this.fh[0]      
+      scaleFactor = (!scaleW || scaleH > scaleW) ? scaleH : scaleW
     }
 
    this.scaler = (w: Length, h: Length) => ({
