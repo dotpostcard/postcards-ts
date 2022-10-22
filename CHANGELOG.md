@@ -1,3 +1,15 @@
+# v0.8.0 (Sat Oct 22 2022)
+
+#### 🚀 Enhancement
+
+- feat: Massive simplification of Size code ([@jphastings](https://github.com/jphastings))
+
+#### Authors: 1
+
+- JP Hastings-Spital ([@jphastings](https://github.com/jphastings))
+
+---
+
 # v0.7.2 (Sun Oct 16 2022)
 
 #### 🐛 Bug Fix
