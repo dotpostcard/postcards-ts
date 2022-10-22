@@ -1,4 +1,4 @@
-import { DoubleSidedSize } from "./size"
+import { Size } from "./size"
 
 export enum Flip {
   Book = "book",
@@ -29,7 +29,7 @@ type LatLong = Required<{
 export type Metadata = {
   location?: { name: string } | { name: string } & LatLong,
   flip: Flip,
-  size: DoubleSidedSize,
+  size: Size,
   sentOn?: Date,
   sender?: Person,
   recipient?: Person,

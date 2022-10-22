@@ -1,6 +1,6 @@
 import { LocalizedText, Metadata, Postcard } from "./types"
 import { ByteReader } from "./bytereader"
-import { DoubleSidedSize } from "./size"
+import { Size } from "./size"
 
 const checkStatus = (res: Response): Response => {
   if (res.status !== 200) {
@@ -53,7 +53,7 @@ const processMetadata = (obj: any): Metadata => {
     ...others,
     flip,
     sentOn: sentOn && new Date(sentOn),
-    size: new DoubleSidedSize(frontSize, flip),
+    size: new Size(frontSize, flip),
     front: front && {
       description: front.description && new LocalizedText(front.description),
       transcription: front.transcription && new LocalizedText(front.transcription),
