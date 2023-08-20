@@ -1,4 +1,4 @@
-import { LocalizedText, Metadata, Postcard } from "./types"
+import { Metadata, Postcard } from "./types"
 import { ByteReader } from "./bytereader"
 import { Size } from "./size"
 
@@ -55,18 +55,18 @@ const processMetadata = (obj: any): Metadata => {
     sentOn: sentOn && new Date(sentOn),
     size: new Size(frontSize, flip),
     front: front && {
-      description: front.description && new LocalizedText(front.description),
-      transcription: front.transcription && new LocalizedText(front.transcription),
+      description: front.description,
+      transcription: front.transcription,
       secrets: front.secrets,
     },
     back: back && {
-      description: back.description && new LocalizedText(back.description),
-      transcription: back.transcription && new LocalizedText(back.transcription),
+      description: back.description,
+      transcription: back.transcription,
       secrets: back.secrets,
     },
     context: context && {
       author: context.author,
-      description: context.description && new LocalizedText(context.description),
+      description: context.description,
     }
   } as Metadata
 }
