@@ -19,11 +19,12 @@ export const fetchPostcard = async (url: string | URL): Promise<Postcard> => {
 
   let postcard = {} as Postcard;
 
-  postcard.frontData = r.readWebP()
+  postcard.frontData = Promise.resolve(await r.readWebP())
 
   const magicBytes = await r.read(8)
-  if (new TextDecoder().decode(magicBytes) !== "postcard") {
-    throw new Error('Not a postcard file')
+  const magicStr = new TextDecoder().decode(magicBytes)
+  if (magicStr !== "postcard") {
+    throw new Error(`Not a postcard file; incorrect postcard magic bytes (${magicStr})`)
   }
 
   const versionBytes = new DataView((await r.read(3)).buffer)
@@ -31,7 +32,7 @@ export const fetchPostcard = async (url: string | URL): Promise<Postcard> => {
   const minor = versionBytes.getUint8(1)
   const patch = versionBytes.getUint8(2)
   postcard.version = `${major}.${minor}.${patch}`
-    
+  
   const metaBytes = await r.readSized()
   const dec = new TextDecoder("utf-8")
   postcard.metadata = processMetadata(JSON.parse(dec.decode(metaBytes)))
