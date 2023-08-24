@@ -12,20 +12,21 @@ const checkStatus = (res: Response): Response => {
 export const fetchPostcard = async (url: string | URL): Promise<Postcard> => {
   const stream = await fetch(url).then(res => checkStatus(res).body)
   if (stream === null) {
-    throw `Unable to retrieve postcard`
+    throw new Error(`Unable to retrieve postcard`)
   }
 
   const r = new ByteReader(stream)
 
   let postcard = {} as Postcard;
 
+  postcard.frontData = r.readWebP()
+
   const magicBytes = await r.read(8)
   if (new TextDecoder().decode(magicBytes) !== "postcard") {
-    throw 'Not a postcard file'
+    throw new Error('Not a postcard file')
   }
 
-  const data = await r.read(3)
-  const versionBytes = new DataView(data.buffer)
+  const versionBytes = new DataView((await r.read(3)).buffer)
   const major = versionBytes.getUint8(0)
   const minor = versionBytes.getUint8(1)
   const patch = versionBytes.getUint8(2)
@@ -35,8 +36,7 @@ export const fetchPostcard = async (url: string | URL): Promise<Postcard> => {
   const dec = new TextDecoder("utf-8")
   postcard.metadata = processMetadata(JSON.parse(dec.decode(metaBytes)))
 
-  postcard.frontData = r.readSized()
-  postcard.backData = postcard.frontData.then(() => r.readSized())
+  postcard.backData = postcard.frontData.then(() => r.readWebP())
 
   return postcard
 }

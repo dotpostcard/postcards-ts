@@ -24,6 +24,25 @@ export class ByteReader {
     return this.read(size)
   }
 
+  async readWebP(): Promise<Uint8Array> {
+    const riffData = await this.read(4)
+    if (riffData.toString() !== 'RIFF') {
+      throw new Error('Invalid WebP')
+    }
+
+    const sizeData = await this.read(4)
+    const size = new DataView(sizeData.buffer).getUint32(0, false)
+    
+    const webpData = await this.read(size)
+  
+    const data = new Uint8Array(size + 8)
+    data.set(riffData, 0)
+    data.set(sizeData, 4)
+    data.set(webpData, 8)
+  
+    return data
+  }
+
   async addToBuffer() {
     const res = await this.reader.read()
     const data = res.value
