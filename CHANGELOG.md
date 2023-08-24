@@ -1,3 +1,19 @@
+# v0.9.0 (Thu Aug 24 2023)
+
+#### 🚀 Enhancement
+
+- feat: Supported v0.11 postcard files ([@jphastings](https://github.com/jphastings))
+
+#### ⚠️ Pushed to `main`
+
+- bug: allow localized descriptions & transcriptions ([@jphastings](https://github.com/jphastings))
+
+#### Authors: 1
+
+- JP Hastings-Spital ([@jphastings](https://github.com/jphastings))
+
+---
+
 # v0.8.0 (Sat Oct 22 2022)
 
 #### 🚀 Enhancement
