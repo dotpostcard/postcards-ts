@@ -4,7 +4,7 @@ import { Size } from "./size"
 
 const checkStatus = (res: Response): Response => {
   if (res.status !== 200) {
-    throw 'Unable to load file'
+    throw new Error('Unable to retrieve remote file')
   }
   return res
 }
