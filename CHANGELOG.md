@@ -1,3 +1,19 @@
+# v0.9.2 (Tue Sep 05 2023)
+
+#### 🐛 Bug Fix
+
+- fix: Throw real error, for tracing ([@jphastings](https://github.com/jphastings))
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/dotpostcard/postcards-ts ([@jphastings](https://github.com/jphastings))
+
+#### Authors: 1
+
+- JP Hastings-Spital ([@jphastings](https://github.com/jphastings))
+
+---
+
 # v0.9.1 (Fri Sep 01 2023)
 
 #### 🐛 Bug Fix
